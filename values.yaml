@@ -1,0 +1,8 @@
+# Case 1: Iterating over a map — both keys should appear
+items:
+  a:
+  b: hello
+
+# Case 2: Map with only nil entries — should be truthy (non-empty)
+filter:
+  aws:
