@@ -1,0 +1,24 @@
+suite: Nil values in maps should be preserved
+templates:
+  - templates/configmap.yaml
+release:
+  name: test
+tests:
+
+  - it: should count both nil and non-nil map entries
+    asserts:
+      - equal:
+          path: data["item-count"]
+          value: "2"
+
+  - it: should include nil-valued keys in iteration
+    asserts:
+      - equal:
+          path: data["item-keys"]
+          value: "a,b"
+
+  - it: should treat a map with only nil values as truthy
+    asserts:
+      - equal:
+          path: data["filter-is-truthy"]
+          value: "yes"
